@@ -289,11 +289,11 @@ class HtmlMinerNodeList implements SeekableIterator, Countable, ArrayAccess {
     }
 
     public function seek($position) {
-        $this->_position = $position;
-
-        if (!$this->valid()) {
+        if (!array_key_exists($position, $this->_dom_nodes)) {
             trigger_error('The given position is out of bounds', E_USER_NOTICE);
         }
+
+        $this->_position = $position;
     }
 
     // Countable
@@ -360,11 +360,11 @@ class HtmlMinerGroupedNodeList implements SeekableIterator, Countable, ArrayAcce
     }
 
     public function seek($position) {
-        $this->_position = $position;
-
-        if (!$this->valid()) {
+        if (!array_key_exists($position, $this->_grouped_dom_nodes)) {
             trigger_error('The given position is out of bounds', E_USER_NOTICE);
         }
+
+        $this->_position = $position;
     }
 
     // Countable
